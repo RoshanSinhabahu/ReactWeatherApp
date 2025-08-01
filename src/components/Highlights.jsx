@@ -6,7 +6,7 @@ import { FiSun, FiEye } from 'react-icons/fi'; // More specific icons
 const Highlights = ({ highlightsData }) => {
   return (
     <div className="highlights-container">
-      <h2 className="highlights-title">What’s Sky Say Today?</h2>
+      <h2 className="highlights-title">What mood is above us?</h2>
       <div className="highlights-grid">
         
         {/* The original cards are now updated to use the 'children' prop format */}
