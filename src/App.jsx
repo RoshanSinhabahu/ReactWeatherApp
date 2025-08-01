@@ -3,6 +3,8 @@ import LeftPanel from './components/LeftPanel';
 import RightPanel from './components/RightPanel';
 import SearchBar from './components/SearchBar';
 import WeatherEffects from './components/WeatherEffects';
+import AboutMe from './components/AboutMe'; // 1. Import the new component
+import { FiInfo } from 'react-icons/fi';
 import './App.css';
 import './effects.css'; // <-- ADD THIS LINE TO IMPORT THE EFFECTS
 
@@ -39,6 +41,8 @@ function App() {
   });
 
   const [unit, setUnit] = useState('C');
+
+  const [isAboutMeOpen, setIsAboutMeOpen] = useState(false);
 
   const formatTemperature = (tempC) => {
     if (unit === 'C') return `${tempC}°`;
@@ -87,6 +91,10 @@ function App() {
           />
         </div>
       </main>
+      <button className="floating-info-button" onClick={() => setIsAboutMeOpen(true)}>
+        <FiInfo size={24} />
+      </button>
+      {isAboutMeOpen && <AboutMe onClose={() => setIsAboutMeOpen(false)} />}
     </div>
   );
 }
