@@ -321,6 +321,7 @@ body {
   border-radius: 1rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   flex-shrink: 0; /* Prevent advice from shrinking */
 }
@@ -344,14 +345,9 @@ body {
 
 /* --- For Tablets and Smaller Desktops (1024px and below) --- */
 @media (max-width: 1024px) {
-  .app-container {
-    padding: 1rem;
-  }
-
   .main-frame {
-    padding: 1.5rem;
     height: auto;
-    max-height: 95vh;
+    max-height: fit-content;
   }
 
   .highlights-grid {
@@ -371,7 +367,7 @@ body {
 @media (max-width: 768px) {
   .main-frame {
     padding: 1rem;
-    overflow-y: auto;
+    max-height: fit-content;
   }
 
   .search-wrapper {
@@ -453,10 +449,14 @@ body {
 
 /* --- For Small Mobile Devices (480px and below) --- */
 @media (max-width: 480px) {
-    .highlights-grid {
-        grid-template-columns: 1fr; 
-    }
-    .right-panel {
-        gap: 2.5rem;
-    }
+  .main-frame {
+    padding: 1rem;
+    max-height: fit-content;
+  }
+  .app-container {
+    padding: 1.2rem;
+  }
+  .right-panel {
+    gap: 2rem;
+  }
 }
