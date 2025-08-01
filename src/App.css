@@ -373,22 +373,19 @@ body {
     padding: 1rem;
     overflow-y: auto;
   }
-  
-  .top-bar {
-    flex-wrap: wrap; 
-    height: auto;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  
+
   .search-wrapper {
     order: 2; 
     width: 100%;
     max-width: none;
+    transform: scale(0.9);
+    transform: translateX(-20%);
   }
   
   .unit-toggle {
     order: 1;
+    transform: translateX(270%);
+    z-index: 20;
   }
 
   .content-panels {
@@ -435,6 +432,22 @@ body {
   }
   .highlight-card .value {
     font-size: 2.5rem;
+  }
+  .current-weather {
+    margin-top: -15px;
+  }
+  .extra-details {
+    margin-top: 30px;
+  }
+  .location-info .location-name {
+    margin-top: 10px;
+    text-align: center;
+  }
+  .location-info .location-country {
+    text-align: center;
+  }
+  .location-info .location-date {
+    text-align: center;
   }
 }
 
