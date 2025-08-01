@@ -4,7 +4,7 @@ A sleek weather app built with React, designed to feel like the weather outside!
 
 ---
 
-🌐 **Live Demo**: https://react-weather-app-roshan.vercel.app/
+🌐 **Live Demo**: https://what-the-sky-say.vercel.app/
 
 ---
 ## 🔍 What It Does
