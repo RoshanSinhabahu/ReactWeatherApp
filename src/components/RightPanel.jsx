@@ -3,22 +3,22 @@ import Forecast from './Forecast';
 import Highlights from './Highlights';
 import Advice from './Advice';
 
-const RightPanel = ({ forecast, highlights, rainChance, temperature, unit, setUnit, formatTemperature }) => {
+// unit and setUnit props have been removed from here
+const RightPanel = ({ forecast, highlights, rainChance, temperature, formatTemperature }) => {
   return (
     <div className="right-panel">
-      {/* The forecast stays at the top */}
       <Forecast 
+        // unit and setUnit are no longer passed to Forecast
         forecastData={forecast} 
-        unit={unit} 
-        setUnit={setUnit} 
         formatTemperature={formatTemperature} 
       />
       
-      {/* New container for the bottom sections to sit side-by-side */}
-      <div className="bottom-content-container">
-        <Highlights highlightsData={highlights} />
-        <Advice rainChance={rainChance} temperature={temperature} />
-      </div>
+      <Highlights highlightsData={highlights} />
+
+      <Advice 
+        rainChance={rainChance}
+        temperature={temperature}
+      />
     </div>
   );
 };

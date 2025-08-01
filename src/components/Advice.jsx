@@ -1,25 +1,40 @@
 import React from 'react';
-import AdviceCard from './AdviceCard';
-import { FiSun, FiUmbrella } from 'react-icons/fi';
-import { WiThermometer } from 'react-icons/wi';
+import { LuUmbrella, LuUmbrellaOff } from 'react-icons/lu';
 
+// This component now generates a single string of advice
 const Advice = ({ rainChance, temperature }) => {
+
+  const getAdviceText = () => {
+    const wearJacket = temperature < 20;
+    const bringUmbrella = rainChance > 50;
+
+    if (wearJacket && bringUmbrella) {
+      return "Wear a jacket and bring an umbrella.";
+    }
+    if (wearJacket && !bringUmbrella) {
+      return "Wear a jacket, no umbrella needed.";
+    }
+    if (!wearJacket && bringUmbrella) {
+      return "Bring an umbrella, no jacket needed.";
+    }
+    return "No umbrella. No jacket. Just vibes. Looks like a great day!";
+  };
+
+  // This variable is used to decide which icon to show
+  const bringUmbrella = rainChance > 50;
+
   return (
-    // The title can be changed to be more specific if you like
-    <div>
-      <h2 className="advice-title">What to Wear & Bring</h2>
-      
-      {/* This grid will now stack the cards vertically */}
-      <div className="advice-grid">
-        <AdviceCard 
-          icon={<FiUmbrella size={24} />} 
-          text={rainChance > 50 ? "Bring an umbrella" : "No umbrella needed"} 
-        />
-        <AdviceCard 
-          icon={<WiThermometer size={24} />} 
-          text={temperature < 20 ? "A light jacket is a good idea" : "Jacket not required"} 
-        />
+    <div className="advice-tile">
+      <div className="advice-icon-container">
+        {/* --- THIS IS THE MODIFIED PART --- */}
+        {/* It checks the 'bringUmbrella' variable and shows the correct icon */}
+        {bringUmbrella ? (
+          <LuUmbrella size={24} />
+        ) : (
+          <LuUmbrellaOff size={24} />
+        )}
       </div>
+      <p className="advice-text">{getAdviceText()}</p>
     </div>
   );
 };
