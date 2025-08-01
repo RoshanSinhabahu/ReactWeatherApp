@@ -1,38 +1,392 @@
-.App {
-  text-align: center;
+/* === 1. REPLACE THE OLD FONT IMPORT WITH THIS ONE === */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* === 2. UPDATE THE FONT-FAMILY HERE === */
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #ffffff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* === Main App Layout === */
+.app-container {
+  background: linear-gradient(to bottom right, #1a1a2e, #16222a);
   min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+}
+
+/* ... (The rest of your CSS file remains exactly the same) ... */
+.main-frame {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(16px);
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 80rem;
+  height: 90vh;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem 2rem 2rem;
+}
+
+.search-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  height: 48px;
+}
+
+.content-panels {
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+/* === Search Bar === */
+.search-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 9999px;
+  transition: all 0.5s ease-in-out;
+}
+.search-bar.closed {
+  width: 48px;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 9999px;
+}
+.search-bar.open {
+  width: 50%;
+  padding: 0 1rem;
+}
+.search-bar .search-icon {
+  color: #d1d5db;
+  flex-shrink: 0;
+  transition: all 0.5s;
+}
+.search-bar.closed .search-icon {
+  margin-left: 0.8rem;
+}
+.search-bar.open .search-icon {
+  margin-right: 0.75rem;
+}
+.search-bar input {
+  background: transparent;
+  color: white;
+  width: 100%;
+  transition: opacity 0.3s;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+.search-bar input::placeholder {
+  color: #9ca3af;
+}
+.search-bar.closed input {
+  opacity: 0;
+}
+.search-bar.open input {
+  opacity: 1;
+}
+
+/* === Left Panel === */
+.left-panel {
+  width: 33.33%;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.location-info .location-name {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+.location-info .location-date {
+  color: #9ca3af;
+}
+.current-weather {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  text-align: center;
+  margin-top: -2.5rem;
+}
+.current-weather .weather-icon-container {
+  position: relative;
+}
+.current-weather .weather-icon-main {
+  font-size: 180px;
+  color: #facc15;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+.current-weather .weather-icon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 180px;
+  color: rgba(255, 255, 255, 0.3);
+}
+.current-weather .temperature {
+  font-size: 5rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin-top: -1rem;
+}
+.current-weather .condition {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.extra-details {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* === Right Panel === */
+.right-panel {
+  width: 66.66%;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* === Forecast Component === */
+.forecast-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.forecast-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+.forecast-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.forecast-card .day {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+.forecast-card .icon {
+  margin: 0.5rem 0;
+  font-size: 1.875rem;
+}
+.forecast-card .temp {
+  font-size: 0.875rem;
+}
+.unit-toggle {
+  margin-left: 1.5rem;
+  flex-shrink: 0;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 9999px;
+}
+.unit-toggle button {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s;
+  border: none;
+  background-color: transparent;
   color: white;
+  cursor: pointer;
+}
+.unit-toggle button.active {
+  background-color: white;
+  color: black;
 }
 
-.App-link {
-  color: #61dafb;
+/* === Highlights Component === */
+.highlights-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+}
+.highlight-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.highlight-card .title-container {
+  display: flex;
+  align-items: center;
+  color: #d1d5db;
+  font-size: 0.875rem;
+}
+.highlight-card .title-container .icon {
+  margin-right: 0.5rem;
+}
+.highlight-card .value {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+.highlight-card .value .unit {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.highlight-card .description {
+  font-size: 0.75rem;
+  color: #9ca3af;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* === Advice Component === */
+.advice-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.advice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.advice-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.advice-card .icon-container {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.75rem;
+  border-radius: 9999px;
+}
+.advice-card .text {
+  font-weight: 500;
+}
+
+/* === Weather Effects === */
+.weather-effects-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+.effect-raindrop {
+  top: -3rem;
+  position: absolute;
+  background: linear-gradient(to bottom, transparent, #87ceeb);
+  width: 0.4px;
+  height: 2rem;
+  animation: fall linear infinite;
+}
+.effect-cloud {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.4);
+  animation: drift linear infinite;
+  font-size: 120px;
+}
+.effect-star {
+  position: absolute;
+  color: rgba(253, 249, 156, 0.8);
+  animation: twinkle 3s ease-in-out infinite;
+  font-size: 2px;
+}
+.effect-snowflake {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.9);
+  animation: snowfall linear infinite;
+  font-size: 15px;
+}
+.effect-lightning {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  animation: lightning-flash 7s linear infinite;
+}
+
+/* === Animation Keyframes === */
+@keyframes fall {
+  from { transform: translateY(-20vh); }
+  to { transform: translateY(120vh); }
+}
+@keyframes drift {
+  from { transform: translateX(-20vw); }
+  to { transform: translateX(120vw); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+@keyframes snowfall {
+  0% { transform: translateY(-20vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+@keyframes lightning-flash {
+  0%, 100% { opacity: 0; }
+  5% { opacity: 0; }
+  6% { opacity: 0.5; }
+  7% { opacity: 0; }
+  8% { opacity: 0.3; }
+  9% { opacity: 0; }
+}
+
+/* New container in RightPanel */
+.bottom-content-container {
+    display: flex;
+    gap: 1.5rem; /* This creates the space between the two sections */
+    flex-grow: 1;
+    overflow: hidden; /* Important to prevent layout issues */
+}
+
+/* This targets the main div inside Highlights.jsx */
+.bottom-content-container > div:first-child {
+    flex: 2; /* The Highlights section will take up 2/3 of the space */
+}
+
+/* This targets the main div inside Advice.jsx */
+.bottom-content-container > div:last-child {
+    flex: 1; /* The Advice section will take up 1/3 of the space */
+}
+
+/* Update the advice grid to be a single column */
+.advice-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* This stacks the cards vertically */
+  gap: 1rem;
 }
