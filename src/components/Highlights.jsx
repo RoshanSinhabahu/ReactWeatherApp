@@ -5,7 +5,7 @@ import { FiSun, FiEye } from 'react-icons/fi'; // More specific icons
 
 const Highlights = ({ highlightsData }) => {
   return (
-    <div>
+    <div className="highlights-container">
       <h2 className="highlights-title">What’s Sky Say Today?</h2>
       <div className="highlights-grid">
         
