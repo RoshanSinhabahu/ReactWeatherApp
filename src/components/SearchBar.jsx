@@ -1,14 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 
-const SearchBar = () => {
+// The component now accepts the 'onSearch' function as a prop
+const SearchBar = ({ onSearch }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const inputRef = useRef(null);
 
+  // This function now calls the onSearch prop passed from App.jsx
   const handleSearch = (e) => {
     if (e.key === 'Enter' && e.target.value) {
-      console.log('Searching for:', e.target.value);
-      e.target.blur();
+      onSearch(e.target.value); // Pass the city name up to the App component
+      e.target.blur(); // This will close the search bar
     }
   };
 
@@ -34,4 +36,5 @@ const SearchBar = () => {
     </div>
   );
 };
+
 export default SearchBar;

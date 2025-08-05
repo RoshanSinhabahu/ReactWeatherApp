@@ -10,7 +10,7 @@
 }
 .effect-raindrop {
   top: -3rem;
-  position: absolute;
+  position: fixed;
   background: linear-gradient(to bottom, rgba(173, 216, 230, 0), rgba(173, 216, 230, 0.6));
   width: 1.5px;
   height: 2rem;
@@ -29,10 +29,11 @@
   font-size: 2px;
 }
 .effect-snowflake {
-  position: absolute;
   color: rgba(255, 255, 255, 0.9);
   animation: snowfall linear infinite;
   font-size: 15px;
+  top: -3rem;
+  position: fixed;
 }
 .effect-lightning {
   position: absolute;
@@ -57,6 +58,33 @@
   z-index: 0;
   filter: blur(90px);
   opacity: 0.5;
+}
+.effect-fog-layer {
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(to top, rgba(200, 210, 220, 0.86), transparent);
+  animation: drift linear infinite;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+}
+.effect-haze {
+  position: absolute;
+  left: -20%;
+  width: 100%;
+  height: 30%;
+  background: radial-gradient(circle, rgba(195, 137, 43, 0.307) 0%, rgba(221, 221, 221, 0) 70%);
+  animation: drift linear infinite;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+}
+.effect-hailstone {
+  position: absolute;
+  color: rgba(220, 230, 240, 0.9);
+  animation: fall linear infinite;
+  font-size: 8px;
+  top: -3rem;
+  position: fixed;
 }
 
 /* === Animation Keyframes === */

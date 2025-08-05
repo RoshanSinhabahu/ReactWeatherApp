@@ -1,5 +1,7 @@
 import React from 'react';
 import { FaCloud, FaStar, FaRegSnowflake } from 'react-icons/fa';
+import { BsCircleFill } from 'react-icons/bs';
+const FogLayer = ({ style }) => <div className="effect-fog-layer" style={style} />;
 
 // Helper components for each effect
 const RainDrop = ({ style }) => <div className="effect-raindrop" style={style} />;
@@ -8,6 +10,9 @@ const Star = ({ style }) => <div className="effect-star" style={style}><FaStar /
 const Snowflake = ({ style }) => <div className="effect-snowflake" style={style}><FaRegSnowflake /></div>;
 const Lightning = ({ style }) => <div className="effect-lightning" style={style} />;
 const Sunbeam = ({ style }) => <div className="effect-sunbeam" style={style} />;
+const FogParticle = ({ style }) => <div className="effect-fog" style={style} />;
+const HazeParticle = ({ style }) => <div className="effect-haze" style={style} />;
+const HailStone = ({ style }) => <div className="effect-hailstone" style={style}><BsCircleFill /></div>;
 
 const WeatherEffects = ({ condition }) => {
   const effects = {
@@ -21,7 +26,7 @@ const WeatherEffects = ({ condition }) => {
       <RainDrop key={i} style={{ 
         left: `${Math.random() * 100}%`, 
         animationDelay: `${Math.random() * 1.5}s`, 
-        animationDuration: `${0.4 + Math.random() * 0.2}s` 
+        animationDuration: `${0.4 + Math.random() * 0.6}s` 
       }} />
     )),
     Thunderstorm: (
@@ -67,6 +72,19 @@ const WeatherEffects = ({ condition }) => {
           animationDelay: `${Math.random() * 10}s`, 
           animationDuration: `${5 + Math.random() * 5}s` 
         }} />
+    )),
+    Foggy: (
+      <>
+        <FogLayer style={{ top: '50%', animationDuration: '40s', animationDelay: '0s' }} />
+        <FogLayer style={{ top: '60%', animationDuration: '35s', animationDelay: '-5s' }} />
+        <FogLayer style={{ top: '70%', animationDuration: '45s', animationDelay: '-10s' }} />
+      </>
+    ),
+    Haze: Array.from({ length: 25 }).map((_, i) => (
+      <HazeParticle key={i} style={{ top: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 15}s`, animationDuration: `${30 + Math.random() * 20}s` }} />
+    )),
+    Hail: Array.from({ length: 100 }).map((_, i) => (
+      <HailStone key={i} style={{ left: `${Math.random() * 200}%`, animationDelay: `${Math.random() * 2}s`, animationDuration: `${0.3 + Math.random() * 5}s` }} />
     )),
   };
 

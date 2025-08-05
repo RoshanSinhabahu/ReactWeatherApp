@@ -37,10 +37,16 @@ body {
 .storm-gradient {
   background: linear-gradient(to bottom, #172f47, #152b40);
 }
+.haze-gradient {
+  background: linear-gradient(to bottom, #d0be5bcf, #5a4419d7);
+}
+.haze-gradient-night {
+  background: linear-gradient(to bottom, #301402, #412c03d7);
+}
 
 .main-frame {
   background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
   border-radius: 2rem;
   width: 100%;
   max-width: 80rem;
