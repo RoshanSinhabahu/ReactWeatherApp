@@ -1,10 +1,8 @@
 import React from 'react';
 import WeatherIcon from './WeatherIcon';
 
-// unit and setUnit props have been removed from here
 const Forecast = ({ forecastData, formatTemperature }) => {
   return (
-    // The main container no longer needs to justify-between
     <div className="forecast-container">
       <div className="forecast-grid">
         {forecastData.map((day, index) => (
@@ -17,7 +15,6 @@ const Forecast = ({ forecastData, formatTemperature }) => {
           </div>
         ))}
       </div>
-      {/* The unit-toggle div has been completely removed from this component */}
     </div>
   );
 };

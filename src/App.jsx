@@ -8,7 +8,6 @@ import { FiInfo } from 'react-icons/fi';
 import './App.css';
 import './effects.css';
 
-// This function maps the API's weather condition to our component's condition names
 const mapApiConditionToEffect = (apiCondition) => {
   const condition = apiCondition.toLowerCase();
   if (condition.includes('thunderstorm')) return 'Thunderstorm';
@@ -19,25 +18,22 @@ const mapApiConditionToEffect = (apiCondition) => {
   if (condition.includes('clouds')) return 'Cloudy';
   if (condition.includes('mist') || condition.includes('fog')) return 'Foggy';
   if (condition.includes('haze')) return 'Haze';
-  return 'Clear'; // Default to Clear
+  return 'Clear';
 };
-
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [unit, setUnit] = useState('C');
   const [isAboutMeOpen, setIsAboutMeOpen] = useState(false);
-  // --- NEW STATE FOR SEARCH AND ERRORS ---
-  const [city, setCity] = useState('Nuwara Eliya'); // Default city
-  const [error, setError] = useState(null); // To handle search errors
+  const [city, setCity] = useState('Nuwara Eliya');
+  const [error, setError] = useState(null);
 
-  // The useEffect hook now depends on the 'city' state
   useEffect(() => {
     const fetchWeatherData = async () => {
-      setError(null); // Reset error state on new fetch
-      setWeatherData(null); // Set to null to show loading message
+      setError(null);
+      setWeatherData(null);
       const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
-      
+
       const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
       const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
 
@@ -102,17 +98,15 @@ function App() {
           },
         };
         setWeatherData(formattedData);
-
       } catch (error) {
         console.error("Failed to fetch weather data:", error);
-        setError(error.message); // Set the error message to display to the user
+        setError(error.message);
       }
     };
 
     fetchWeatherData();
-  }, [city]); // <-- The hook now re-runs whenever 'city' changes
+  }, [city]);
 
-  // --- NEW FUNCTION TO HANDLE SEARCH ---
   const handleSearch = (searchedCity) => {
     setCity(searchedCity);
   };
@@ -124,7 +118,6 @@ function App() {
 
   const getBackgroundColorClass = () => {
     if (!weatherData) return 'night-gradient';
-    
     const condition = weatherData.conditionIcon;
     const hour = new Date().getHours();
     const isDay = hour > 6 && hour < 19;
@@ -133,11 +126,9 @@ function App() {
     if (condition === 'Haze') return isDay ? 'haze-gradient' : 'haze-gradient-night';
     if (['Cloudy', 'Rainy', 'Drizzle', 'Mist', 'Foggy'].includes(condition)) return 'cloudy-gradient';
     if (isDay) return 'day-gradient';
-    
     return 'night-gradient';
   };
 
-  // Show a loading or error message
   if (!weatherData) {
     return (
       <div className="app-container night-gradient">
@@ -154,7 +145,6 @@ function App() {
       <main className="main-frame">
         <div className="top-bar">
           <div className="search-wrapper">
-            {/* Pass the handleSearch function to the SearchBar */}
             <SearchBar onSearch={handleSearch} />
           </div>
           <div className="unit-toggle">

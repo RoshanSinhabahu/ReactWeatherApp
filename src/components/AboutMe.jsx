@@ -1,23 +1,17 @@
 import React from 'react';
-// Import icons for the modal
 import { FiX, FiLinkedin, FiGithub, FiFacebook } from 'react-icons/fi';
 
-// The 'onClose' prop is a function that will be passed from App.jsx to close the modal
 const AboutMe = ({ onClose }) => {
   return (
-    // The modal-overlay provides the dark, clickable background
     <div className="modal-overlay" onClick={onClose}>
-      {/* The modal-card itself, with glassmorphism styles */}
       <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-        {/* Close button */}
         <button className="close-button" onClick={onClose}>
           <FiX size={20} />
         </button>
 
-        {/* Profile content */}
         <div className="profile-content">
           <img 
-            src="https://media.licdn.com/dms/image/v2/D5603AQE_ixbpFmR73Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1718300773852?e=1756944000&v=beta&t=_9pPgUyWQgXLy7ilW7mhiU4KbAhsCTdKC4oJsTnvx8I" // A placeholder image, you can replace this URL
+            src="https://media.licdn.com/dms/image/v2/D5603AQE_ixbpFmR73Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1718300773852?e=1756944000&v=beta&t=_9pPgUyWQgXLy7ilW7mhiU4KbAhsCTdKC4oJsTnvx8I" 
             alt="Developer portrait" 
             className="profile-image"
           />
@@ -28,7 +22,6 @@ const AboutMe = ({ onClose }) => {
           </p>
         </div>
 
-        {/* Social media links */}
         <div className="social-links">
           <p className="connect-text">connect with me</p>
           <div className="icon-container">

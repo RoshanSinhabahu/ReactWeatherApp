@@ -1,15 +1,13 @@
 import React from 'react';
-import HighlightCard from './HighlightCard'; // Import our reusable card
-import { WiStrongWind, WiHumidity, WiSunrise, WiSunset } from 'react-icons/wi'; // Icons for highlights
-import { FiSun, FiEye } from 'react-icons/fi'; // More specific icons
+import HighlightCard from './HighlightCard';
+import { WiStrongWind, WiHumidity, WiSunrise, WiSunset } from 'react-icons/wi';
+import { FiSun, FiEye } from 'react-icons/fi';
 
 const Highlights = ({ highlightsData }) => {
   return (
     <div className="highlights-container">
       <h2 className="highlights-title">What mood is above us?</h2>
       <div className="highlights-grid">
-        
-        {/* The original cards are now updated to use the 'children' prop format */}
         <HighlightCard icon={<FiSun size={20} />} title="UV Index">
           <div className="value">{highlightsData.uv}</div>
         </HighlightCard>
@@ -20,7 +18,6 @@ const Highlights = ({ highlightsData }) => {
           </div>
         </HighlightCard>
 
-        {/* --- NEW SUNRISE & SUNSET CARD --- */}
         <HighlightCard icon={<WiSunrise size={20} />} title="Sunrise & Sunset">
           <div className="sunrise-sunset-container">
             <div className="time-row">
@@ -55,7 +52,6 @@ const Highlights = ({ highlightsData }) => {
             {highlightsData.air_quality > 50 ? "Moderate" : "Good"}
           </p>
         </HighlightCard>
-
       </div>
     </div>
   );

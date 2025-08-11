@@ -3,7 +3,6 @@ import { FaCloud, FaStar, FaRegSnowflake } from 'react-icons/fa';
 import { BsCircleFill } from 'react-icons/bs';
 const FogLayer = ({ style }) => <div className="effect-fog-layer" style={style} />;
 
-// Helper components for each effect
 const RainDrop = ({ style }) => <div className="effect-raindrop" style={style} />;
 const Cloud = ({ style }) => <div className="effect-cloud" style={style}><FaCloud /></div>;
 const Star = ({ style }) => <div className="effect-star" style={style}><FaStar /></div>;
@@ -48,7 +47,7 @@ const WeatherEffects = ({ condition }) => {
         top: `${Math.random() * 80}%`, 
         left: `-20%`, 
         animationDelay: `${Math.random() * 4}s`,
-        animationDuration: `${20 + Math.random() * 15}s` 
+        animationDuration: `${10 + Math.random() * 15}s` 
       }} />
     )),
     PartlyCloudy: Array.from({ length: 7 }).map((_, i) => (
@@ -56,7 +55,7 @@ const WeatherEffects = ({ condition }) => {
           top: `${Math.random() * 70}%`, 
           left: `-20%`, 
           animationDelay: `${Math.random() * 4}s`,
-          animationDuration: `${25 + Math.random() * 15}s` 
+          animationDuration: `${10 + Math.random() * 15}s` 
         }} />
     )),
     Clear: Array.from({ length: 150 }).map((_, i) => (

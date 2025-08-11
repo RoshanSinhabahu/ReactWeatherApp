@@ -113,8 +113,8 @@
   }
 }
 @keyframes drift {
-  from { transform: translateX(-20vw); }
-  to { transform: translateX(120vw); }
+  from { transform: translateX(-120%); }
+  to { transform: translateX(300%); }
 }
 @keyframes twinkle {
   0%, 100% { opacity: 0.4; transform: scale(0.8); }
