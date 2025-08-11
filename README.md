@@ -1,29 +1,31 @@
 # 🌦️ React Weather Dashboard
 
-A sleek weather app built with React, designed to feel like the weather outside! With animated backgrounds and a modern glass-style UI.
+A sleek React weather app that shows **live weather data** with animated backgrounds, a modern glass-style UI, and real-time updates.
+
+## 🧩 AI & Me: The Collaboration
+
+During development, I explored how AI could help with specific needs 😃, mainly using **Google Gemini**, with some help from ChatGPT.  
+I adjusted the AI-generated code to fit the project.  
+The idea and design are mine, and AI helped speed up development and gave useful guidance.
+
+🌐 **Live Demo:** https://what-the-sky-say.vercel.app/
+
+🔧 Still fixing bugs and making improvements — check back anytime for updates!
 
 ---
 
-🌐 **Live Demo**: https://what-the-sky-say.vercel.app/
+## 🔍 Features
 
----
-## 🔍 What It Does
-
-- Weather info with cool animations (rain, snow, thunder, stars ✨)
-- Glassmorphism UI design
-- Fully component-based
-- Simple, clean CSS
-
-⚠️ Currently using static data. Coming soon: live weather API, working search bar, and effects like fog & mist.
+- 🎞️ Animated backgrounds: rain, snow, thunder, stars ✨  
+- 🧊 Clean Glassmorphism UI  
+- ⚛️ Component-based React structure  
+- 🧼 Simple and maintainable CSS  
 
 ---
 
 ## 🧰 Built With
 
 - React  
-- CSS
-- React Icons
-
----
-
-Designed by me 💡 with a bit of help from Google AI for code & debugging. Focused on clean UX and modern visuals.
+- CSS  
+- React Icons  
+- OpenWeatherMap API  
