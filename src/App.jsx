@@ -25,7 +25,7 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [unit, setUnit] = useState('C');
   const [isAboutMeOpen, setIsAboutMeOpen] = useState(false);
-  const [city, setCity] = useState('Colombo');
+  const [city, setCity] = useState('Nuwara Eliya');
   const [error, setError] = useState(null);
 
   useEffect(() => {
